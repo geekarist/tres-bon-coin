@@ -8,8 +8,12 @@ angular.module('webappApp')
             'Karma'
         ];
 
+        $http.get('../webresources/myresource/regions').success(function(data) {
+            $scope.regions = data.items;
+        });
+
         $scope.updateRegion = function() {
-            $http.get('../webresources/myresource?region='+ $scope.region).success(function(data) {
+            $http.get('../webresources/myresource/results?region='+ $scope.region).success(function(data) {
                 var items = data.items;
                 $scope.awesomeThings = [];
                 for (var i = 0; i<items.length; i++) {

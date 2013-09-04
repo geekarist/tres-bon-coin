@@ -1,13 +1,15 @@
 <div class="hero-unit">
-  <h1>Très bon coin!</h1>
-  <p>You now have</p>
+    <h1>Très bon coin!</h1>
 
-  <select id="region" ng-model="region" ng-change="updateRegion()">
-    <option value="ile_de_france">IDF</option>
-    <option value="alsace">alsace</option>
-  </select>
+    <p>You now have</p>
 
-  <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
-  </ul>
+    <select id="region" ng-model="region" ng-change="updateRegion()">
+        <!--<option value="ile_de_france">IDF</option>-->
+        <!--<option value="alsace">alsace</option>-->
+        <option ng-repeat="r in regions" value="{{r.url}}">{{r.name}}</option>
+    </select>
+
+    <ul>
+        <li ng-repeat="thing in awesomeThings">{{thing}}</li>
+    </ul>
 </div>
