@@ -1,9 +1,20 @@
 
 package fr.xebia.tresboncoin;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 /** Example resource class hosted at the URI path "/myresource"
  */
@@ -13,10 +24,18 @@ public class MyResource {
     /** Method processing HTTP GET requests, producing "text/plain" MIME media
      * type.
      * @return String that will be send back as a response of type "text/plain".
+     * @param ile_de_france
      */
     @GET 
-    @Produces("text/plain")
-    public String getIt() {
-        return "Hi there!";
+    @Produces("application/json")
+
+    public TbcResults getIt(@QueryParam("region") String region) throws IOException {
+        Document document = Jsoup.connect("http://www.leboncoin.fr/annonces/offres/"+region+"/").get();
+        Elements titles = document.select(".list-lbc .title");
+        List<String> results = new ArrayList<String>();
+        for (Element title : titles) {
+            results.add(title.text());
+        }
+        return new TbcResults(results);
     }
 }
