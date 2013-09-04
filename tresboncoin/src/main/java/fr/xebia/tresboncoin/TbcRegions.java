@@ -1,7 +1,5 @@
 package fr.xebia.tresboncoin;
 
-import sun.jvm.hotspot.opto.Block_List;
-
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
