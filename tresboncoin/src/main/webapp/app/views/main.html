@@ -1,9 +1,13 @@
 <div class="hero-unit">
-  <h1>'Allo, 'Allo!</h1>
+  <h1>Très bon coin!</h1>
   <p>You now have</p>
+
+  <select id="region" ng-model="region" ng-change="updateRegion()">
+    <option value="ile_de_france">IDF</option>
+    <option value="alsace">alsace</option>
+  </select>
+
   <ul>
       <li ng-repeat="thing in awesomeThings">{{thing}}</li>
   </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
 </div>
